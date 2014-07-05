@@ -7,8 +7,6 @@ Basic bookmarklet that creates a drop-down menu on every comment in a thread for
 You could put the source code on your own server if you want (but then you don't get cool new features!), otherwise just make a new bookmark and set the URL to this:
 
     javascript:void($.getScript('https://rawgithub.com/iGGNoRe/shareddit/master/main.js'))
-    
-I wouldn't recommend linking to beta.js, because it breaks more than it works. That's my playground for new features.
 
 ## Use comment sharing
 

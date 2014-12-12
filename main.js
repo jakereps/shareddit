@@ -13,7 +13,7 @@ $.getScript("http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js", funct
                 // checks to stop duplicates
                 if($(this).hasClass("shareddit") === false) {
                     var permalink = encodeURIComponent($("a:contains('permalink')", $(this)).get(0)); 
-                    permalink = permalink.replace("www", "np");
+                    permalink = permalink.replace("www.", "np.");
                     var title = $(this).prev().text(); 
                     title = encodeURIComponent(title); 
                     var user = "/u/" + $(this).prev().prev().find("a.author").text();
@@ -51,20 +51,26 @@ $.getScript("http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js", funct
                 }
 
         });
-        
-        
-        // removes all expando buttons from the page because for some reason
-        // x-posting will not work for links with expandos on them?
-        $(".expando-button").each(function(index) { $(this).remove()});
-
 
         // adds x-post links to each post on the page
         $(".flat-list").has("a.comments").each(function (index) {
                 
                 // checks to stop duplicates
                 if($(this).hasClass("shareddit") === false) {
-                    var listingLink = encodeURIComponent($(this).prev().prev().find("a.title").attr("href"));
-                    var listingTitle = $(this).prev().prev().find("a.title").text();
+                    
+                    var listingLink = $(this).prevUntil('div.entry').find("a.title").attr("href");
+                    var listingTitle = $(this).prevUntil('div.entry').find("a.title").text();
+                    
+
+                    var selfPostCheck = $(this).prevUntil('div.entry').find('a.title').attr("href").split('/');
+                    
+                    // checks to see if link is a self post and formats url correctly
+                    if (selfPostCheck[1] === 'r') {
+                        listingLink = "http://www.reddit.com" + listingLink;
+                    };
+
+                    listingLink = encodeURIComponent(listingLink);
+
                     var listingSub = $(this).find("a.comments").attr("href").split('/');
         
                     listingSub = "/r/" + listingSub[listingSub.indexOf('r') + 1];

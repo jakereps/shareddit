@@ -1,7 +1,7 @@
-# Now Available as a Safari Extension!
-<a href='http://cefns.nau.edu/~jk788/shareddit/shareddit.safariextz' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/safari.png'></a>
-
-Other browsers coming soon!
+# Browser Extension now available!
+|Chrome|Firefox|Safari|
+|:--------:|:--------:|:----------:|
+| <img src='http://cefns.nau.edu/~jk788/shareddit/chrome-wip.png' title='Coming soon...'>  | <img src='http://cefns.nau.edu/~jk788/shareddit/firefox-wip.png' title='Coming soon...'> | <a href='http://cefns.nau.edu/~jk788/shareddit/shareddit.safariextz' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/safari.png'></a> |
 
 
 # shareddit bookmarklet

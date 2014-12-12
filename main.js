@@ -1,92 +1,154 @@
-// nocontext hotlink bookmarlet - master file
+// nocontext hotlink bookmarklet - master file
 // coded by /u/iGGNoRe
 
+(function(){
 
-$.getScript("http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js", function () {
+	if (document.URL.split('?')[0] === 'http://www.reddit.com/submit'){
+			
+		var url = document.getElementById('url');
+		url.value = url.value.substr(0, url.value.length - 8);
+		
+	} else {
 
+		main();
+		checkDocumentHeight(loadMoreComments);
 
-        // adds drop-down menu to every VISIBLE comment, won't add to comments
-        // that are revealed after clicking on "show more" links without
-        // using it again
-        $(".flat-list:has(a:contains('permalink'))").each(function (index) { 
-                
-                // checks to stop duplicates
-                if($(this).hasClass("shareddit") === false) {
-                    var permalink = encodeURIComponent($("a:contains('permalink')", $(this)).get(0)); 
-                    permalink = permalink.replace("www.", "np.");
-                    var title = $(this).prev().text(); 
-                    title = encodeURIComponent(title); 
-                    var user = "/u/" + $(this).prev().prev().find("a.author").text();
-                    var drop = $("<form name='menuform'> \
-                                           <select name='menu1'> \
-                                           <option value='' selected>-- Select Destination --</option> \
-                                           <option value=''>/r/bestof</option> \
-                                           <option value=''>/r/nocontext</option> \
-                                           <option value=''>/r/retiredgif</option> \
-                                           </select> \
-                                           </form>");
-                    drop.click(function () {
-                        if ($("option:selected", drop).text() === "-- Select Destination --") {
-                            return false;
-                        } else if ($("option:selected", drop).text() === "/r/bestof") {
-                            title = user + " [DESCRIPTION]";
-                            title = encodeURI(title);
-                            sub = "bestof";
-                        } else if ($("option:selected", drop).text() === "/r/nocontext") {
-                            sub = "nocontext";
-                        } else if ($("option:selected", drop).text() === "/r/retiredgif") {
-                            title = user + " retires [GIF]";
-                            title = encodeURI(title);
-                            sub = "retiredgif";
-                        }
-                        var context = prompt("How many parent comments to include for context?", 1); 
-                        if (context < 0 || context == "" || context == null) {
-                            context = 0;
-                        }
-                        var dest = "http://www.reddit.com/r/" + sub + "/submit?title=" + title + "&url=" + permalink + "?context=" + context; 
-                        window.location = dest; 
-                    });
-                    $(this).append($("<li></li>").append(drop));
-                    $(this).addClass("shareddit");
-                }
+	}
+		
+	function main(){
+			
+		var entries = document.getElementsByClassName('entry');
+		generateXPosts(entries);
 
-        });
+		var comments = document.getElementsByClassName('comment');
+		generateShareDrops(comments);
+	
+	};
 
-        // adds x-post links to each post on the page
-        $(".flat-list").has("a.comments").each(function (index) {
-                
-                // checks to stop duplicates
-                if($(this).hasClass("shareddit") === false) {
-                    
-                    var listingLink = $(this).prevUntil('div.entry').find("a.title").attr("href");
-                    var listingTitle = $(this).prevUntil('div.entry').find("a.title").text();
-                    
+	function checkDocumentHeight(callback){
+	    var lastHeight = document.body.clientHeight, newHeight, timer;
+	    
+	    (function run(){
+	        newHeight = document.body.clientHeight;
+	        if( lastHeight != newHeight )
+	            callback();
+	        lastHeight = newHeight;
+	        timer = setTimeout(run, 200);
+	    })();
+	
+	};
 
-                    var selfPostCheck = $(this).prevUntil('div.entry').find('a.title').attr("href").split('/');
-                    
-                    // checks to see if link is a self post and formats url correctly
-                    if (selfPostCheck[1] === 'r') {
-                        listingLink = "http://www.reddit.com" + listingLink;
-                    };
+	function generateShareDrops(comments){
 
-                    listingLink = encodeURIComponent(listingLink);
+		for (var i = comments.length - 1; i >= 0; i--) {
 
-                    var listingSub = $(this).find("a.comments").attr("href").split('/');
-        
-                    listingSub = "/r/" + listingSub[listingSub.indexOf('r') + 1];
-                    listingTitle = encodeURIComponent(listingTitle + " (x-post " + listingSub + ")");
-        
-                    //getting the subreddit takes so many lines because "a.subreddit" is not available once you are
-                    //inside of a subreddit, so this way it works from /r/all, frontpage, and inside of any subreddit.
-        
-                    var xPost = $("<li><a href=\"http://www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "/\">x-post this link</a></li>");
-        
-                    $(this).append("<li class='shareddit'></li>").append(xPost);
-                    $(this).addClass("shareddit");
-                }
-        });
+			if (!comments[i].classList.contains('shareddit')){
 
-    var jQuery1_4 = $.noConflict(true); // I have no idea what this line does, I assume it's essential...
+				id = comments[i].getAttribute('data-fullname');
 
+				var drop = document.createElement('select');
+				
+				drop.name = id;
+				drop.onchange = shareddit;
+				drop.innerHTML = "<option value='' selected>-- Select Destination --</option> \
+									<option value='bestof'>/r/bestof</option> \
+									<option value='nocontext'>/r/nocontext</option> \
+									<option value='retiredgif'>/r/retiredgif</option>";
 
-});
+				comments[i].querySelector('ul').appendChild(drop);
+
+				comments[i].className = comments[i].className + " shareddit";
+
+			};
+			
+		};
+
+	};
+
+	function generateXPosts(entries) {
+
+		for (var i = entries.length - 1; i >= 0; i--) {
+
+			if (!entries[i].classList.contains('shareddit') && !entries[i].getElementsByClassName('sponsored-tagline').length && entries[i].getElementsByClassName('title').length){
+
+				var listingTitle = entries[i].getElementsByTagName('a')[0].innerHTML;
+				var listingLink = entries[i].getElementsByTagName('a')[0].getAttribute('href');
+
+				if (listingLink.split('/')[1] === 'r') {
+					listingLink = "http://www.reddit.com" + listingLink;
+				};
+
+				listingLink = encodeURIComponent(listingLink);
+
+				var listingSub = entries[i].getElementsByClassName('comments')[0].getAttribute("href").split('/');
+	        
+				listingSub = "/r/" + listingSub[listingSub.indexOf('r') + 1];
+
+	            listingTitle = encodeURIComponent(listingTitle + " (x-post " + listingSub + ")");
+
+	            var postID = new Array(8).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, 7);
+	            var xPost = "<li><a href=\"http://www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "/?" + postID + "\">x-post this link</a></li>";
+
+				entries[i].getElementsByClassName('flat-list')[0].innerHTML = entries[i].getElementsByClassName('flat-list')[0].innerHTML + xPost;
+				entries[i].className = entries[i].className + " shareddit";
+
+			};
+			
+		};
+
+	};
+
+	function loadMoreComments(){
+	
+	    main();
+	
+	}
+
+	function shareddit(){ 
+
+		var comm = document.getElementsByClassName('id-' + this.name);
+		comm = comm[0]; 
+
+		var permalink = comm.getElementsByClassName('bylink')[0].getAttribute('href');
+		permalink = permalink.replace('www.', 'np.');
+		
+		var title = comm.getElementsByClassName('md')[0].textContent;
+		title = encodeURIComponent(title);
+		
+		var user = '/u/' + comm.getElementsByClassName('author')[0].textContent;
+		
+		if (this.value === '') {
+
+			return false;
+		
+		} else if(this.value === 'bestof'){
+		
+			title = user + ' [DESCRIPTION]';
+	        title = encodeURI(title);
+			sub = 'bestof';
+		
+		} else if(this.value === 'nocontext'){
+		
+			sub = 'nocontext';
+		
+		} else if(this.value === 'retiredgif'){
+		
+			title = user + ' retires [GIF]';
+			title = encodeURI(title);
+			sub = 'retiredgif';
+
+		}
+
+		var context = prompt('How many parent comments to include for context?', 1); 
+		if (context < 0 || context == '' || context == null) {
+		
+			context = 0;
+	    
+	    }
+		
+		var dest = 'http://www.reddit.com/r/' + sub + '/submit?title=' + title + '&url=' + permalink + '?context=' + context;
+		window.location = dest; 
+		
+	};
+
+})();

@@ -19,7 +19,7 @@ You could put the source code on your own server if you want (but then you don't
 
 ## Use x-post sharing
 
-*This new feature removes all expando buttons from the page, because for some reason trying to x-post links that had expandos on them did not work. A simple refresh of the page brings them all back.
+Now supports self posts, and doesn't remove expando buttons.
 
 1. Click the bookmarklet either on the subreddit's listing page, or inside the comment page of the link
 2. Click on the newly generated hotlink that says "x-post this link"

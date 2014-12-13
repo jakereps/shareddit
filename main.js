@@ -3,7 +3,7 @@
 
 (function () {
   
-  alert('For the latest version please change your url to:\nhttps://cdn.rawgit.com/iGGNoRe/shareddit/20c78dfec461414be8c6067dfe91e91e00f77f8a/main.js')
+  alert('For the latest version please change your url to:\nhttps://cdn.rawgit.com/iGGNoRe/shareddit/20c78dfec461414be8c6067dfe91e91e00f77f8a/main.js');
 
   function checkDocumentHeight(callback) {
     var lastHeight = document.body.clientHeight, newHeight, timer;

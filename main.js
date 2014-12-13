@@ -100,11 +100,17 @@
   function generateXPosts(entries) {
 
     var i = entries.length - 1;
+    var j = 0;
+    var dupeBlock = '/';
     var listingTitle = '';
     var listingLink = '';
     var listingSub = '';
     var postID = [];
     var xPost = '';
+    
+    for (j = 0; j < Math.floor((Math.random() + 1) * 3); j++) {
+          dupeBlock = dupeBlock + '/';
+    }
 
     for (i; i >= 0; i--) {
 
@@ -128,9 +134,8 @@
         listingSub = "/r/" + listingSub[listingSub.indexOf('r') + 1];
 
         listingTitle = encodeURIComponent(listingTitle + " (x-post " + listingSub + ")");
-
-        postID = new Array(8).join((Math.random().toString(36) + '00000000000000000').slice(2, 18)).slice(0, 7);
-        xPost = "<li><a href=\"//www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "/?" + postID + "\">x-post this link</a></li>";
+        
+        xPost = "<li><a href=\"//www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "/" + dupeBlock + "\">x-post this link</a></li>";
 
         entries[i].getElementsByClassName('flat-list')[0].innerHTML = entries[i].getElementsByClassName('flat-list')[0].innerHTML + xPost;
         entries[i].className = entries[i].className + " shareddit";
@@ -151,16 +156,7 @@
 
   }
 
-  if (document.URL.split('?')[0].split(':')[1] === '//www.reddit.com/submit') {
-
-    var url = document.getElementById('url');
-    url.value = url.value.substr(0, url.value.length - 8);
-
-  } else {
-
     main();
     checkDocumentHeight(main);
-
-  }
 
 }());

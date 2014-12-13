@@ -2,6 +2,7 @@
 |Chrome|Firefox|Safari|
 |:--------:|:--------:|:----------:|
 | <a href='http://bit.ly/shareddit-chrome' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/chrome-done.png'></a>  | <a href='http://bit.ly/shareddit-firefox' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/firefox-done.png'></a> | <a href='http://bit.ly/shareddit-safari' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/safari-done.png'></a> |
+|`v 0.1.4` <br> `Dec 13, 2014`|`v 0.1.4` <br> `Dec 13, 2014`|`v 0.1.4` <br> `Dec 13, 2014`|
 
 
 # shareddit bookmarklet

@@ -2,6 +2,8 @@
 // coded by /u/iGGNoRe
 
 (function(){
+	
+	alert("Please update your bookmarklet URL to use the following instead:\n\nhttps://cdn.rawgit.com/iGGNoRe/shareddit/master/main.js\n\nThis alert will stay active for a day or so.");
 
 	if (document.URL.split('?')[0] === 'http://www.reddit.com/submit'){
 			

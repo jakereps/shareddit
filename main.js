@@ -13,7 +13,7 @@
 	} else {
 
 		main();
-		checkDocumentHeight(loadMoreComments);
+		checkDocumentHeight(main);
 
 	}
 		
@@ -99,12 +99,6 @@
 		};
 
 	};
-
-	function loadMoreComments(){
-	
-	    main();
-	
-	}
 
 	function shareddit(){ 
 

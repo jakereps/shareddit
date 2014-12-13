@@ -25,7 +25,7 @@
 		var comments = document.getElementsByClassName('comment');
 		generateShareDrops(comments);
 	
-	};
+	}
 
 	function checkDocumentHeight(callback){
 	    var lastHeight = document.body.clientHeight, newHeight, timer;
@@ -38,7 +38,7 @@
 	        timer = setTimeout(run, 200);
 	    })();
 	
-	};
+	}
 
 	function generateShareDrops(comments){
 
@@ -52,20 +52,20 @@
 				
 				drop.name = id;
 				drop.onchange = shareddit;
-				drop.innerHTML = "<option value='' selected>-- Select Destination --</option> \
-									<option value='bestof'>/r/bestof</option> \
-									<option value='nocontext'>/r/nocontext</option> \
-									<option value='retiredgif'>/r/retiredgif</option>";
+				drop.innerHTML = "<option value='' selected>-- Select Destination --</option>" +
+						"<option value='bestof'>/r/bestof</option>" +
+					       	"<option value='nocontext'>/r/nocontext</option>" +
+						"<option value='retiredgif'>/r/retiredgif</option>";
 
 				comments[i].querySelector('ul').appendChild(drop);
 
 				comments[i].className = comments[i].className + " shareddit";
 
-			};
+			}
 			
-		};
+		}
 
-	};
+	}
 
 	function generateXPosts(entries) {
 
@@ -77,7 +77,7 @@
 				var listingLink = entries[i].getElementsByTagName('a')[0].getAttribute('href');
 
 				if (listingLink.split('/')[1] === 'r') {
-					listingLink = "http://www.reddit.com" + listingLink;
+					listingLink = "//www.reddit.com" + listingLink;
 				};
 
 				listingLink = encodeURIComponent(listingLink);
@@ -86,19 +86,19 @@
 	        
 				listingSub = "/r/" + listingSub[listingSub.indexOf('r') + 1];
 
-	            listingTitle = encodeURIComponent(listingTitle + " (x-post " + listingSub + ")");
+	            		listingTitle = encodeURIComponent(listingTitle + " (x-post " + listingSub + ")");
 
-	            var postID = new Array(8).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, 7);
-	            var xPost = "<li><a href=\"http://www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "/?" + postID + "\">x-post this link</a></li>";
+	        		var postID = new Array(8).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, 7);
+	            		var xPost = "<li><a href=\"http://www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "/?" + postID + "\">x-post this link</a></li>";
 
 				entries[i].getElementsByClassName('flat-list')[0].innerHTML = entries[i].getElementsByClassName('flat-list')[0].innerHTML + xPost;
 				entries[i].className = entries[i].className + " shareddit";
 
-			};
+			}
 			
-		};
+		}
 
-	};
+	}
 
 	function shareddit(){ 
 
@@ -113,14 +113,14 @@
 		
 		var user = '/u/' + comm.getElementsByClassName('author')[0].textContent;
 		
-		if (this.value === '') {
+		if (!this.value) {
 
 			return false;
 		
 		} else if(this.value === 'bestof'){
 		
 			title = user + ' [DESCRIPTION]';
-	        title = encodeURI(title);
+	        	title = encodeURI(title);
 			sub = 'bestof';
 		
 		} else if(this.value === 'nocontext'){
@@ -140,11 +140,11 @@
 		
 			context = 0;
 	    
-	    }
+	    	}
 		
-		var dest = 'http://www.reddit.com/r/' + sub + '/submit?title=' + title + '&url=' + permalink + '?context=' + context;
+		var dest = '//www.reddit.com/r/' + sub + '/submit?title=' + title + '&url=' + permalink + '?context=' + context;
 		window.location = dest; 
 		
-	};
+	}
 
 })();

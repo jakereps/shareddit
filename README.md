@@ -12,7 +12,7 @@ shareddit is a basic bookmarklet, and now extension, that creates a drop-down me
 
 You could put the source code on your own server if you want (but then you don't get cool new features!), otherwise just make a new bookmark and set the URL to this (link last updated December 13, 2014):
 
-    javascript:void($.getScript('https://cdn.rawgit.com/iGGNoRe/shareddit/3dceca582ac93900a75325908716a6893199b17f/main.js'))
+    javascript:void($.getScript('https://cdn.rawgit.com/iGGNoRe/shareddit/master/main.js'))
 
 ## Use comment sharing
 

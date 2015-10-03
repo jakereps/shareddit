@@ -14,10 +14,8 @@ The extensions have a duplicate submission blocking system in place, while the b
 
 Pick a browser and install the extension. More features are in the works, but as this is just a fun learning experiment at the moment, homework assignments come first.
 
-|Chrome|Firefox|Safari|
-|:--------:|:--------:|:----------:|
+
 | <a href='http://bit.ly/shareddit-chrome' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/chrome-done.png'></a>  | <a href='http://bit.ly/shareddit-firefox' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/firefox-done.png'></a> | <a href='http://bit.ly/shareddit-safari' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/safari-done.png'></a> |
-|`v 0.1.5` <br> `Mar 8, 2015`|`v 0.1.5` <br> `Dec 22, 2014`|`v 0.1.5` <br> `Dec 22, 2014`|
 
 
 Or if you would prefer, you can put the source code on your own server (but then you don't get cool new features!), otherwise just make a new bookmark and set the URL to this (link last updated October 2, 2015):

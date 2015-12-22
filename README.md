@@ -2,7 +2,7 @@
 |Chrome|Firefox|Safari|
 |:--------:|:--------:|:----------:|
 | <a href='http://bit.ly/shareddit-chrome' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/chrome-done.png'></a>  | <a href='http://bit.ly/shareddit-firefox' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/firefox-done.png'></a> | <a href='http://bit.ly/shareddit-safari' title='Click to Download'><img src='http://cefns.nau.edu/~jk788/shareddit/safari-done.png'></a> |
-|`v 0.1.5` <br> `Mar 8, 2015`|`v 0.1.5` <br> `Dec 22, 2014`|`v 0.1.5` <br> `Dec 22, 2014`|
+|`v 0.1.5` <br> `Mar 8, 2015`|`v 0.1.5.1` <br> `Dec 22, 2015`|`v 0.1.5` <br> `Dec 22, 2014`|
 
 # shareddit bookmarklet
 
@@ -43,3 +43,10 @@ Now supports self posts, and doesn't remove expando buttons.
 4. Submit
 
 ![Demo](http://giant.gfycat.com/ConsciousAdorableHellbender.gif)
+
+
+---
+
+## Changelog
+
+December 22, 2015 - Signed FireFox extension, resolving disabled extension issue.

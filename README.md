@@ -20,7 +20,7 @@ Pick a browser and install the extension. More features are in the works, but as
 
 Or if you would prefer, you can put the source code on your own server (but then you don't get cool new features!), otherwise just make a new bookmark and set the URL to this (link last updated October 2, 2015):
 
-    javascript:void($.getScript('https://cdn.rawgit.com/iGGNoRe/shareddit/master/main.js'))
+    javascript:void($.getScript('https://cefns.nau.edu/~jk788/shareddit/js/shareddit.js'))
 
 ## Use comment sharing
 

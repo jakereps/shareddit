@@ -90,10 +90,10 @@
       drop.name = id;
       drop.onclick = shareddit;
       drop.innerHTML = "<option value='' selected>-- Select Destination --</option>" +
-                "<option value='bestof'>/r/bestof</option>" +
-                "<option value='nocontext'>/r/nocontext</option>" +
-                "<option value='retiredgif'>/r/retiredgif</option>" +
-                "<option value='other'>other...</option>";
+      "<option value='bestof'>/r/bestof</option>" +
+      "<option value='nocontext'>/r/nocontext</option>" +
+      "<option value='retiredgif'>/r/retiredgif</option>" +
+      "<option value='other'>other...</option>";
 
       comm.getElementsByClassName('flat-list')[0].appendChild(drop);
 
@@ -139,7 +139,6 @@
   function generateXPosts(entries) {
 
     var i = entries.length - 1;
-    var j = 0;
     var listingTitle = '';
     var listingLink = '';
     var listingSub = '';
@@ -153,11 +152,7 @@
         listingLink = entries[i].getElementsByTagName('a')[0].getAttribute('href');
 
         if (listingLink.split('/')[1] === 'r') {
-          if (document.URL.split(':')[0] === 'https') {
-            listingLink = "https://www.reddit.com" + listingLink;
-          } else {
-            listingLink = "http://www.reddit.com" + listingLink;
-          }
+          listingLink = "https://www.reddit.com" + listingLink;
         }
 
         listingLink = encodeURIComponent(listingLink);
@@ -168,7 +163,7 @@
 
         listingTitle = encodeURIComponent(listingTitle + " (x-post " + listingSub + ")");
 
-        xPost = "<li><a href=\"//www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "\">x-post this link</a></li>";
+        xPost = "<li><a href=\"//www.reddit.com/submit?title=" + listingTitle + "&url=" + listingLink + "\">x-post</a></li>";
 
         entries[i].getElementsByClassName('flat-list')[0].innerHTML = entries[i].getElementsByClassName('flat-list')[0].innerHTML + xPost;
         entries[i].className = entries[i].className + " shareddit";
@@ -188,7 +183,6 @@
   }
 
   var $ = document.querySelectorAll.bind(document);
-
   main();
   checkDocumentHeight(main);
 

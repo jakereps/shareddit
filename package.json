@@ -1,0 +1,26 @@
+{
+  "name": "shareddit",
+  "version": "0.1.5",
+  "description": "share reddit with reddit",
+  "license": "MIT",
+  "repository": "jakereps/shareddit",
+  "bugs": { "url" : "http://github.com/jakereps/shareddit/issues"
+  },
+  "author": {
+    "name": "Jorden Kreps",
+    "email": "jordenkreps@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "keywords": [
+  ],
+  "devDependencies": {
+    "gulp-qunit": "~0.2.1",
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.5.1"
+  }
+}

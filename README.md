@@ -31,7 +31,7 @@ Or if you would prefer, you can put the source code on your own server (but then
 5. Fill in the description template if it is going to /r/bestof, or /r/retiredgif
 6. Submit
 
-![Demo](http://fat.gfycat.com/JitteryLividFoal.gif)
+![Demo](http://cefns.nau.edu/~jk788/shareddit/JitteryLividFoal.gif)
 
 ## Use x-post sharing
 
@@ -42,7 +42,7 @@ Now supports self posts, and doesn't remove expando buttons.
 3. Fill in the destination sub
 4. Submit
 
-![Demo](http://giant.gfycat.com/ConsciousAdorableHellbender.gif)
+![Demo](http://cefns.nau.edu/~jk788/shareddit/ConsciousAdorableHellbender.gif)
 
 
 ---

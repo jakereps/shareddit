@@ -1,4 +1,4 @@
-# This Repo Lives only as an Archive"
+# This Repo Lives only as an Archive
 
 Reddit has built the behavior into the website. No point in continuing any development. 
 

@@ -1,3 +1,7 @@
+# This Repo Lives only as an Archive"
+
+Reddit has built the behavior into the website. No point in continuing any development. 
+
 # <img src='http://cefns.nau.edu/~jk788/shareddit/Icon-48.png'> Browser Extension now available! [![Build Status](https://travis-ci.org/jakereps/shareddit.svg?branch=master)](https://travis-ci.org/jakereps/shareddit)
 |Chrome|Firefox|Safari|
 |:--------:|:--------:|:----------:|
